@@ -3,20 +3,31 @@
   "displayName": "Example For Markdown",
   "description": "Full Markdown Example",
   "version": "0.0.1",
+  "icon": "markdown.png",
+  "publisher": "longmo",
   "engines": {
     "vscode": "^1.103.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+     "onStartupFinished"
+  ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "example-for-markdown.helloWorld",
-      "title": "Hello World"
-    }]
-  },
+      "commands": [{
+          "command": "markdown.example",
+          "title": "MarkdownExample"
+      }],
+      "menus": {
+          "editor/context": [{
+              "when": "resourceExtname == .md",
+              "command": "markdown.example",
+              "group": "navigation"
+          }]
+      }
+    },
   "scripts": {
     "lint": "eslint .",
     "pretest": "pnpm run lint",
